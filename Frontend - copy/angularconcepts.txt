@@ -1,0 +1,9 @@
+Angular Standalone app
+components
+Module
+Data Binding
+|->Parent-Child Communication
+|->String Interpolation
+|->One way Binding
+|->Two Way Binding
+
