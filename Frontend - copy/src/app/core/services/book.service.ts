@@ -14,18 +14,18 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  getAllBooks(): Observable<Book[]>{
+  getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/books`);
   }
 
-  addBook(book:any): Observable<Book[]>{
-   return this.http.post<Book[]>(`${this.baseUrl}/books`,book);
+  addBook(book: any): Observable<Book[]> {
+    return this.http.post<Book[]>(`${this.baseUrl}/books`, book);
   }
 
-  deleteBook(id:string):Observable<Book[]>{
+  deleteBook(id: string): Observable<Book[]> {
     return this.http.delete<Book[]>(`${this.baseUrl}/books/${id}`);
   }
-  updateBook(id:string,book:any){
-    return this.http.put(`${this.baseUrl}/books/${id}`,book);
+  updateBook(id: string, book: any) {
+    return this.http.put(`${this.baseUrl}/books/${id}`, book);
   }
 }

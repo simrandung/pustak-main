@@ -46,13 +46,6 @@ def get_top_books(users_collection: Collection = Depends(get_user_collection)):
     except Exception as e:
         raise HTTPException(status_code=500,detail=str(e))
 
-@router.post("/books")
-async def create_book(book: Book, current_user: dict = Depends(get_current_user)):
-    if current_user.get("role") != "admin":
-        raise HTTPException(status_code=403, detail="Only admins can add books")
-
-    sample_collection.insert_one(dict(book))
-    return bookEntity(sample_collection.find_one({"title": book.title}))
 
 @router.put("/books/{id}")
 async def update_book(id: str, book: Book, current_user: dict = Depends(get_current_user)):
@@ -62,6 +55,14 @@ async def update_book(id: str, book: Book, current_user: dict = Depends(get_curr
     sample_collection.find_one_and_update({"_id": ObjectId(id)}, {"$set": dict(book)})
     return {"msg": "Book updated successfully"}
 
+@router.post("/books")
+async def create_book(book: Book, current_user: dict = Depends(get_current_user)):
+    if current_user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Only admins can add books")
+    sample_collection.insert_one(dict(book))
+    return bookEntity(sample_collection.find_one({"title": book.title}))
+
+
 @router.delete("/books/{id}")
 async def delete_book(id: str, current_user: dict = Depends(get_current_user)):
     if current_user.get("role") != "admin":
@@ -69,9 +70,6 @@ async def delete_book(id: str, current_user: dict = Depends(get_current_user)):
 
     sample_collection.find_one_and_delete({"_id": ObjectId(id)})
     return {"msg": "Book deleted successfully"}
-# Dummy email sender
-# def send_email_available(email: str, book_title: str):
-#     print(f"[EMAIL] To: {email} | '{book_title}' is now back in stock!")
 
 @router.get("/out-of-stock")
 def get_out_of_stock_books(current_user=Depends(get_current_user)):
@@ -82,8 +80,6 @@ def get_out_of_stock_books(current_user=Depends(get_current_user)):
     for book in books:
         book["_id"] = str(book["_id"])
     return books
-
-
 
 @router.post("/{book_id}/restock")
 def restock_book(book_id: str, current_user=Depends(get_current_user)):

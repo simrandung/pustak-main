@@ -7,6 +7,5 @@ def bookEntity(item) -> dict:
         "cover_image": item["cover_image"],
         "in_stock": item["in_stock"]
     }
-
 def booksEntity(entity) ->list:
     return [bookEntity(item) for item in entity]

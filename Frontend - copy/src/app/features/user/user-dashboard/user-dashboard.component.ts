@@ -25,7 +25,6 @@ export class UserDashboardComponent implements OnInit{
   ngOnInit(): void {
 
     this.userService.getAllBooks().subscribe(res => {
-      //console.log(res);
       this.books = res;
       this.filteredBooks = res;
       
@@ -40,9 +39,6 @@ export class UserDashboardComponent implements OnInit{
   }
 
   addToCart(book: any) {
-    console.log("Into the cart");
-    
-    // console.log(book);
     
     if (!book.in_stock) {
       alert(`Sorry! "${book.title}" is out of stock, but added to your wishlist.`);

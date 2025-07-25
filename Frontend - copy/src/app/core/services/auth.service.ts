@@ -11,14 +11,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  register(data:any): Observable<RegisterResponse>{
+  register(data: any): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(`${this.baseUrl}/register`, data);
   }
 
   login(data: URLSearchParams): Observable<LoginResponse> {
-    const headers = { 'Content-Type' : 'application/x-www-form-urlencoded'};
-    return this.http.post<LoginResponse>(`${this.baseUrl}/login`,data.toString(),{ headers })
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, data.toString(), { headers })
   }
 
- 
+
 }

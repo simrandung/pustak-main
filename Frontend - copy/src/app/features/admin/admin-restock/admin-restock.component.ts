@@ -26,7 +26,7 @@ export class AdminRestockComponent implements OnInit {
 
   restock(bookId: string) {
     this.http.post(`http://localhost:8000/api/${bookId}/restock`, {}).subscribe(() => {
-      this.loadBooks(); // Refresh after restock
+      this.loadBooks(); 
       alert('Book restocked and users notified via email');
     });
   }
