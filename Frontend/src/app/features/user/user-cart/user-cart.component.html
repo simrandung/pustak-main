@@ -1,0 +1,60 @@
+<nav class="flex justify-between items-center p-4 bg-white shadow">
+    <h1 class="text-2xl font-bold text-blue-700">📘 Pustak</h1>
+    <div class="flex items-center gap-4">
+        <input type="text" [(ngModel)]="searchText" (input)="searchBooks()" placeholder="Search books..."
+            class="border px-3 py-1 rounded shadow-sm" />
+        <div class="bg-cyan-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-semibold">
+            🔔
+        </div>
+
+        <button (click)="logout()" type="button"
+            class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 mt-3">Logout</button>
+    </div>
+</nav>
+
+
+<!-- <div class="max-w-4xl mx-auto p-4">
+  <h1 class="text-2xl font-bold text-center mb-6">🛒 Your Cart</h1>
+
+  <table mat-table [dataSource]="cartItems" class="mat-elevation-z8 w-full rounded overflow-hidden"> -->
+
+    <!-- Title Column -->
+    <!-- <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef class="text-left py-2 px-4">Title</th>
+      <td mat-cell *matCellDef="let item" class="py-2 px-4"> {{item.title}} </td>
+    </ng-container> -->
+
+    <!-- Price Column -->
+    <!-- <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef class="text-left py-2 px-4">Price</th>
+      <td mat-cell *matCellDef="let item" class="py-2 px-4">₹{{item.price}}</td>
+    </ng-container> -->
+
+    <!-- Actions Column -->
+    <!-- <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="text-left py-2 px-4">Actions</th>
+      <td mat-cell *matCellDef="let item" class="py-2 px-4">
+        <button mat-icon-button color="warn" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+
+    <!-- Header and Row Rendering -->
+    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-200 text-sm font-semibold"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
+
+  <!-- If Cart Empty -->
+  <!-- <div *ngIf="cartItems.length === 0" class="text-center mt-10 text-gray-500">
+    Your cart is empty 🛒
+  </div> -->
+
+  <!-- Checkout Button -->
+  <!-- <div class="text-right mt-6">
+    <button
+      class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold">
+      Proceed to Checkout
+    </button>
+  </div>
+</div> -->
