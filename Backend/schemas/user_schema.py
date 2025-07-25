@@ -6,10 +6,3 @@ def user_helper(user) -> dict:
         "role" : user["role"]
     }
 
-
-
-# class UserLogin(BaseModel):
-#     email: EmailStr
-#     password: str
-#     cart: Optional[List[str]] = []
-#     wishlist: Optional[List[str]] = []

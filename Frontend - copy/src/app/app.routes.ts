@@ -5,7 +5,6 @@ import { ManageBooksComponent } from './features/admin/manage-books/manage-books
 import { AdminRestockComponent } from './features/admin/admin-restock/admin-restock.component';
 import { ManageUsersComponent } from './features/admin/manage-users/manage-users.component';
 import { ManageOrdersComponent } from './features/admin/manage-orders/manage-orders.component';
-// import { RegisterComponent } from './features/auth/register/register.component';
 
 export const routes: Routes = [
     {

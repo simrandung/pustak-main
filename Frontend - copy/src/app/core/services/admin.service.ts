@@ -11,12 +11,11 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
- 
-  getTopBooks():Observable<Cart[]>{
+  getTopBooks(): Observable<Cart[]> {
     return this.http.get<Cart[]>(`${this.baseUrl}/top-books`);
   }
 
-  getAllBooks():Observable<Book[]>{
+  getAllBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.baseUrl}/books`);
   }
 }

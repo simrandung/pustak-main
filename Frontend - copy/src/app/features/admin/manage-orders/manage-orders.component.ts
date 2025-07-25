@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookService } from 'src/app/core/services/book.service';
 
@@ -15,7 +15,7 @@ export class ManageOrdersComponent implements OnInit {
   users: any[] = []
   isDarkMode = false
 
-  constructor(private bookService: BookService){}
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
     this.loadBooks();
@@ -23,12 +23,12 @@ export class ManageOrdersComponent implements OnInit {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
       this.isDarkMode = true;
-    
-  }
-}
 
-  loadBooks(){
-    this.bookService.getAllBooks().subscribe((data)=>{
+    }
+  }
+
+  loadBooks() {
+    this.bookService.getAllBooks().subscribe((data) => {
       this.books = data;
     })
   }

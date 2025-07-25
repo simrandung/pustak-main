@@ -26,8 +26,8 @@ export class ManageUsersComponent implements OnInit {
 
   }
 
-  loadBooks(){
-    this.bookservice.getAllBooks().subscribe((data)=>{
+  loadBooks() {
+    this.bookservice.getAllBooks().subscribe((data) => {
       this.books = data;
     })
   }

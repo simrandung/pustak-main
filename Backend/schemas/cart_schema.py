@@ -6,6 +6,5 @@ def cartEntity (cart) -> dict:
         "quantity": cart["quantity"]
         
     }
-
 def cartEntityList(cart_list) -> list:
     return [cartEntity(cart) for cart in cart_list]
