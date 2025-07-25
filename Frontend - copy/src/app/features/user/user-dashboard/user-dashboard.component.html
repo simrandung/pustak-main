@@ -1,18 +1,18 @@
 <!-- NAVBAR -->
 
 <app-user-navbar></app-user-navbar>
-<nav>
+<!-- <nav> -->
   <!-- Logo -->
-  <h1 class="text-3xl font-extrabold tracking-wide">📘 Pustak</h1>
+  <!-- <h1 class="text-3xl font-extrabold tracking-wide">📘 Pustak</h1> -->
 
   <!-- Search and Actions -->
-  <div class="flex items-center gap-4">
+  <!-- <div class="flex items-center gap-4"> -->
     <!-- Search -->
-    <input type="text" [(ngModel)]="searchText" (input)="searchBooks()" placeholder="Search books..."
-      class="px-4 py-2 rounded-lg border border-gray-300 text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+    <!-- <input type="text" [(ngModel)]="searchText" (input)="searchBooks()" placeholder="Search books..."
+      class="px-4 py-2 rounded-lg border border-gray-300 text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300" /> -->
 
     <!-- Notification Bell -->
-    <div class="relative">
+    <!-- <div class="relative">
       <div class="bg-white text-blue-700 rounded-full w-10 h-10 flex items-center justify-center text-xl shadow">
         🔔
       </div>
@@ -20,30 +20,30 @@
         class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full shadow">
         {{ notifications }}
       </span>
-    </div>
+    </div> -->
 
     <!-- Cart Button -->
-    <button (click)="cart()" type="button"
+    <!-- <button (click)="cart()" type="button"
       class="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg text-sm px-5 py-2.5 shadow flex items-center gap-2">
       🛒 Cart
-    </button>
+    </button> -->
 
     <!-- Wishlist Button -->
-    <button (click)="wishlist()" type="button"
+    <!-- <button (click)="wishlist()" type="button"
       class="bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg text-sm px-5 py-2.5 shadow flex items-center gap-2">
       ❤️ Wishlist
-    </button>
+    </button> -->
 
     <!-- Logout Button -->
-    <button (click)="logout()" type="button"
+    <!-- <button (click)="logout()" type="button"
       class="border border-red-500 text-red-500 hover:bg-red-600 hover:text-white font-semibold rounded-lg text-sm px-5 py-2.5 shadow">
       Logout
     </button>
   </div>
-</nav>
+</nav> -->
 
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-gray-100">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-gradient-to-br from-blue-100 to-purple-200">
   <div *ngFor="let book of filteredBooks; let i = index" class="[perspective:1000px] w-full h-[400px]">
     <div class="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d]"
       [ngClass]="{ '[transform:rotateY(180deg)]': flippedCards[i] }">
