@@ -10,19 +10,30 @@
         </div>
         <h1 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Manage Users</h1>
         <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-600">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-6">
-            <div class="bg-white dark:bg-slate-800 shadow rounded-lg p-4 text-center">
-                <h2 class="text-xl font-semibold dark:text-white">Total Users</h2>
-                <p class="text-blue-600 dark:text-blue-400 text-3xl mt-2">{{users.length}}</p>
-            </div>
-            <div class="bg-white dark:bg-slate-800 shadow rounded-lg p-4 text-center">
-                <h2 class="text-xl font-semibold dark:text-white">Books 📚</h2>
-                <p class="text-blue-600 dark:text-blue-400 text-3xl mt-2">{{books.length}}</p>
-            </div>
-            <div class="bg-white dark:bg-slate-800 shadow rounded-lg p-4 text-center">
-                <h2 class="text-xl font-semibold dark:text-white">Orders 📦</h2>
-                <p class="text-blue-600 dark:text-blue-400 text-3xl mt-2">42</p>
-            </div>
-        </div>
+        <app-admin-cards [refreshTrigger]="refreshCounter"></app-admin-cards>
+
+        <table class="w-full mt-8 bg-white dark:bg-slate-800 shadow rounded">
+  <thead>
+    <tr class="text-left border-b border-gray-300 dark:border-gray-700">
+      <th class="p-3">Sr. No.</th>
+      <th class="p-3">Username</th>
+      <th class="p-3">Email</th>
+      <th class="p-3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index" class="border-b border-gray-200 dark:border-gray-700">
+      <td class="p-3">{{ i + 1 }}</td>
+      <td class="p-3">{{ user.username }}</td>
+      <td class="p-3">{{ user.email }}</td>
+      <td class="p-3">
+        <button (click)="deleteUser(user.email)" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
     </div>
 </main>

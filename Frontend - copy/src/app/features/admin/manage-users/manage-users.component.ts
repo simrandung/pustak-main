@@ -1,35 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BookService } from 'src/app/core/services/book.service';
+import { AdminService } from 'src/app/core/services/admin.service';
+import { User } from 'src/app/core/models/user.model';
+import { AdminCardsComponent } from "src/app/shared/components/admin-cards/admin-cards.component";
 
 @Component({
   selector: 'app-manage-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AdminCardsComponent],
   templateUrl: './manage-users.component.html',
   styleUrls: ['./manage-users.component.css']
 })
 export class ManageUsersComponent implements OnInit {
+  isDarkMode = false;
+  users: User[] = [];
+  refreshCounter = 0;
 
-  books: any[] = []
-  users: any[] = []
-  isDarkMode = false
 
-  constructor(private bookservice: BookService) { }
+  constructor(private adminService: AdminService) {}
+
   ngOnInit(): void {
-    this.loadBooks();
+    this.fetchUsers();
     const theme = localStorage.getItem('hs_theme');
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
       this.isDarkMode = true;
     }
 
-  }
-
-  loadBooks() {
-    this.bookservice.getAllBooks().subscribe((data) => {
-      this.books = data;
-    })
+    
   }
 
   toggleDarkMode() {
@@ -46,6 +44,21 @@ export class ManageUsersComponent implements OnInit {
       this.isDarkMode = true;
     }
   }
+
+  fetchUsers() {
+    this.adminService.getAllUsers().subscribe((res: User[]) => {
+      this.users = res.filter(user => user.role !== 'admin');
+    });
+  }
+
+ deleteUser(email: string) {
+  if (confirm(`Are you sure you want to delete user with email ${email}?`)) {
+    this.adminService.deleteUserByEmail(email).subscribe(() => {
+      this.users = this.users.filter(user => user.email !== email);
+      this.refreshCounter++; // Trigger refresh in AdminCardsComponent
+    });
+  }
+}
 
 
 

@@ -1,37 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BookService } from 'src/app/core/services/book.service';
+import { AdminService } from 'src/app/core/services/admin.service';
+import { AdminCardsComponent } from 'src/app/shared/components/admin-cards/admin-cards.component';
+import { Cart, UserOrder } from 'src/app/core/models/cart.model'; // Use your path
 
 @Component({
   selector: 'app-manage-orders',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AdminCardsComponent],
   templateUrl: './manage-orders.component.html',
   styleUrls: ['./manage-orders.component.css']
 })
 export class ManageOrdersComponent implements OnInit {
+  isDarkMode = false;
+  refreshCounter = 0;
 
-  books: any[] = []
-  users: any[] = []
-  isDarkMode = false
+  userOrders: UserOrder[] = [];
 
-  constructor(private bookService: BookService) { }
+  constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    this.loadBooks();
+    this.fetchOrders();
+
     const theme = localStorage.getItem('hs_theme');
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
       this.isDarkMode = true;
-
     }
   }
 
-  loadBooks() {
-    this.bookService.getAllBooks().subscribe((data) => {
-      this.books = data;
-    })
-  }
   toggleDarkMode() {
     const html = document.documentElement;
     this.isDarkMode = html.classList.contains('dark');
@@ -47,4 +44,14 @@ export class ManageOrdersComponent implements OnInit {
     }
   }
 
+  fetchOrders() {
+    this.adminService.getAllUserOrders().subscribe((res: UserOrder[]) => {
+      this.userOrders = res;
+    });
+  }
+
+  onOrderChange() {
+    this.refreshCounter++;
+    this.fetchOrders();
+  }
 }

@@ -3,3 +3,8 @@ export interface Cart {
   title: string;
   quantity: number;
 }
+
+export interface UserOrder {
+  email: string;
+  orders: Cart[];
+}

@@ -7,11 +7,13 @@ import { UserService } from 'src/app/core/services/user.service';
 import { BookService } from 'src/app/core/services/book.service';
 import { Wishlist } from 'src/app/core/models/wishlist.model';
 import { Book } from 'src/app/core/models/book.model';
+import { UserNavbarComponent } from 'src/app/shared/components/user-navbar/user-navbar.component';
+import { FooterComponent } from "src/app/shared/components/footer/footer.component";
 
 @Component({
   selector: 'app-user-wishlist',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, UserNavbarComponent, FooterComponent],
   templateUrl: './user-wishlist.component.html',
   styleUrls: ['./user-wishlist.component.css'],
 })

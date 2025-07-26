@@ -51,6 +51,13 @@ export class UserService {
   removeFromCart(title: string): Observable<Cart[]> {
     return this.http.put<Cart[]>(`${this.BASE_URL}/cart/remove`, { title });
   }
+
+checkoutCart(): Observable<any> {
+  return this.http.post(`${this.BASE_URL}/checkout`, {});
+}
+
+
+
   clearCart(): Observable<Cart[]> {
     return this.http.put<Cart[]>(`${this.BASE_URL}/cart/clear`, {});
   }

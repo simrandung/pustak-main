@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 @Component({
   selector: 'app-admin-layout',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,FooterComponent],
   templateUrl: './admin-layout.component.html',
   styleUrls: ['./admin-layout.component.css']
 })
@@ -19,6 +20,8 @@ isCollapsed = false;
   }
 
   logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
     this.router.navigate(['landingPage']);
   }
 

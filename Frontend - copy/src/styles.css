@@ -1,9 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-html, body { height: 100%; @apply font-sans; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.mat-typography,.mat-card,.mat-button,.mat-toolbar{
-    font-family: 'Poppins', sans-serif !important;
+/* Override default body font */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Optional: Override Angular Material classes manually */
+.mat-typography,
+.mat-card,
+.mat-button,
+.mat-toolbar,
+.mat-form-field,
+.mat-input-element,
+.mat-h1,
+.mat-h2,
+.mat-h3,
+.mat-body,
+.mat-title {
+  font-family: 'Arial', sans-serif !important;
 }

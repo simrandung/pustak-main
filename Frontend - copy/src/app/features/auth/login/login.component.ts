@@ -31,12 +31,11 @@ export class LoginComponent {
 
     this.authService.login(formData).subscribe({
       next: (res) => {
-        console.log(res);
-        console.log(res.role);
         
         
         localStorage.setItem('token',res.access_token);
         localStorage.setItem('role',res.role);
+        localStorage.setItem('email', this.loginForm.value.username);
         alert("Login successfully!");
         if(res.role === 'admin'){
           this.router.navigate(['/admin/home'])

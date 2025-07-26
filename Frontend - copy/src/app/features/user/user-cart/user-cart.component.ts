@@ -12,6 +12,7 @@ import { CheckoutDialogComponent } from '../checkout-dialog/checkout-dialog.comp
 import { Cart } from 'src/app/core/models/cart.model';
 import { Book } from 'src/app/core/models/book.model';
 import { Router, RouterModule } from '@angular/router';
+import { UserNavbarComponent } from "src/app/shared/components/user-navbar/user-navbar.component";
 
 interface CartItems {
   title: string;
@@ -31,8 +32,9 @@ interface CartItems {
     MatIconModule,
     MatDialogModule,
     RouterModule,
-    FormsModule
-  ],
+    FormsModule,
+    UserNavbarComponent
+],
   templateUrl: './user-cart.component.html',
   styleUrls: ['./user-cart.component.css']
 })
@@ -111,28 +113,43 @@ goBack() {
 
 
   checkout() {
-    if(this.total === 0){
-      alert("Your cart is empty")
-    }
-    else{ 
-  const dialogRef = this.dialog.open(CheckoutDialogComponent);
+  if (this.total === 0) {
+    alert("Your cart is empty");
+  } else {
+    // 1. Call backend to process checkout & send email
+    this.userService.checkoutCart().subscribe({
+      next: (res) => {
+        console.log('Checkout response:', res);
 
-  dialogRef.afterClosed().subscribe(() => {
-    // Reset the cart after dialog is closed
-    this.cart = [];
-    this.subtotal = 0;
-    this.tax = 0;
-    this.total = 0;
+        // 2. Show confirmation dialog after backend confirms
+        const dialogRef = this.dialog.open(CheckoutDialogComponent, {
+          data: {
+            invoice: res.invoice || '',
+            message: res.message || 'Checkout completed successfully.'
+          }
+        });
 
-    // Optionally, clear cart on backend too
-    this.userService.clearCart().subscribe(() => {
-      console.log('Cart cleared on backend');
+        dialogRef.afterClosed().subscribe(() => {
+          // 3. Reset frontend cart
+          this.cart = [];
+          this.subtotal = 0;
+          this.tax = 0;
+          this.total = 0;
+
+          // 4. Clear cart from backend (optional if already done in checkout route)
+          this.userService.clearCart().subscribe(() => {
+            console.log('Cart cleared on backend');
+          });
+        });
+      },
+      error: (err) => {
+        console.error('Checkout failed', err);
+        alert("Checkout failed. Please try again later.");
+      }
     });
-  });
-
-
-    }
   }
+}
+
 
   // searchBooks() {
   //   const term = this.searchText.toLowerCase();

@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BookService } from 'src/app/core/services/book.service';
 import { FormsModule } from '@angular/forms';
+import { AdminService } from 'src/app/core/services/admin.service';
+import { User } from 'src/app/core/models/user.model';
+import { AdminCardsComponent } from "src/app/shared/components/admin-cards/admin-cards.component";
 
 @Component({
   selector: 'app-manage-books',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdminCardsComponent],
   templateUrl: './manage-books.component.html',
   styleUrls: ['./manage-books.component.css']
 })
 export class ManageBooksComponent implements OnInit {
   books: any[] = [];
-  users: any[] = [];
   newBook = { book_id: '', title: '', author: '', price: '', cover_image: '' }
-  //editingBook: any = null;
+editingBook: any = null;
+
 
   isDarkMode = false
   toggleDarkMode() {
@@ -32,11 +35,10 @@ export class ManageBooksComponent implements OnInit {
     }
   }
 
-  constructor(private bookService: BookService) {
-
-  }
+  constructor(private bookService: BookService, private adminService: AdminService) { }
   ngOnInit(): void {
     this.loadBooks();
+
 
     const theme = localStorage.getItem('hs_theme');
     if (theme === 'dark') {
@@ -53,28 +55,38 @@ export class ManageBooksComponent implements OnInit {
     })
   }
 
-  addBook() {
-    const token = localStorage.getItem('role');
-    console.log(token);
-
+ addBook() {
+  if (this.editingBook) {
+    this.bookService.updateBook(this.editingBook.id, this.newBook).subscribe(() => {
+      this.newBook = { book_id: '', title: '', author: '', price: '', cover_image: '' };
+      this.editingBook = null;
+      this.loadBooks();
+    });
+  } else {
     this.bookService.addBook(this.newBook).subscribe(() => {
       this.newBook = { book_id: '', title: '', author: '', price: '', cover_image: '' };
       this.loadBooks();
-    })
+    });
   }
+}
+
+editBook(book: any) {
+  this.editingBook = book;
+  this.newBook = { ...book };
+}
 
   deleteBook(id: string) {
     this.bookService.deleteBook(id).subscribe(() =>
       this.loadBooks());
   }
 
-  updateBook(id: string, book: any) {
-    this.bookService.updateBook(id, book).subscribe(() => {
+  // updateBook(id: string, book: any) {
+  //   this.bookService.updateBook(id, book).subscribe(() => {
 
-      this.loadBooks();
-    })
+  //     this.loadBooks();
+  //   })
 
-  }
+  // }
   // loadUsers(){
   //   this.bookService.getAllUsers().subscribe((data)=>{
   //     this.users = data;

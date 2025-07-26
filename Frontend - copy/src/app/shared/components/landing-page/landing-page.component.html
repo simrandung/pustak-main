@@ -1,11 +1,155 @@
 <app-navbar></app-navbar>
+<section class="bg-[#c8d1f5] min-h-screen py-16 font-[Poppins]">
+    <div
+        class="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 py-12 min-h-screen bg-[#c8d1f5] font-sans">
+
+        <!-- Left Image -->
+        <div class="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
+            <img src="../../../../assets/books/landingpage.png" alt="Books illustration"
+                class="w-[300px] md:w-[500px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] rounded-xl hover:shadow-lg" />
+
+        </div>
+
+        <!-- Right Text (Styled Like Screenshot) -->
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center text-center h-full">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#1d4ed8] drop-shadow-md mb-2">
+                Welcome to Pustak <span>📚</span>
+            </h1>
+
+            <p class="mb-8 text-lg md:text-xl text-gray-700 max-w-md">
+                Your one-stop platform to Wishlist, Discover, and Buy Books
+            </p>
+            <div class="inline-block">
+                <button routerLink="/register"
+                    class="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full flex items-center justify-center shadow-md hover:from-purple-600 hover:to-blue-600 transition-all duration-300">
+                    <!-- Right Arrow SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
 
 
-<div class="bg-gradient-to-b from-blue-300 to-blue-500 via-indigo-100 shadow-md h-full">
-    <div class="relative size-32">
-        <div class="absolute right-0 bottom-0 size-16 font-bold">Welcome to Pustak 📚</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<!-- Section: Books We Offer -->
+<section class="py-10 px-6 bg-white">
+  <h2 class="text-center text-3xl font-bold text-purple-800 mb-8">Books We Offer</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- Card 1 -->
+    <div class="flex items-center bg-white rounded-2xl shadow-lg p-6 space-x-6 min-h-[180px]">
+      <img src="../../../../assets/books/fiction.jpg" alt="Fiction" class="w-24 h-24 rounded-full object-cover shadow-md" />
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800">Fiction</h3>
+        <p class="text-gray-600">Explore a world of stories and imagination.</p>
+      </div>
     </div>
 
+    <!-- Card 2 -->
+    <div class="flex items-center bg-white rounded-2xl shadow-lg p-6 space-x-6 min-h-[180px]">
+      <img src="../../../../assets/books/science.png" alt="Science" class="w-24 h-24 rounded-full object-cover shadow-md" />
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800">Science</h3>
+        <p class="text-gray-600">Dive into facts, experiments, and logic.</p>
+      </div>
+    </div>
 
-</div>
+    <!-- Card 3 -->
+    <div class="flex items-center bg-white rounded-2xl shadow-lg p-6 space-x-6 min-h-[180px]">
+      <img src="../../../../assets/books/self help.jpg" alt="Self Help" class="w-24 h-24 rounded-full object-cover shadow-md" />
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800">Self Help</h3>
+        <p class="text-gray-600">Level up your mindset and productivity.</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="flex items-center bg-white rounded-2xl shadow-lg p-6 space-x-6 min-h-[180px]">
+      <img src="../../../../assets/books/biography.jpg" alt="Biographies" class="w-24 h-24 rounded-full object-cover shadow-md" />
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800">Biographies</h3>
+        <p class="text-gray-600">Get inspired by real-life stories and leaders.</p>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="flex items-center bg-white rounded-2xl shadow-lg p-6 space-x-6 min-h-[180px]">
+      <img src="../../../../assets/books/history.jpg" alt="History" class="w-24 h-24 rounded-full object-cover shadow-md" />
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800">History</h3>
+        <p class="text-gray-600">Discover the past and understand the present.</p>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="flex items-center bg-white rounded-2xl shadow-lg p-6 space-x-6 min-h-[180px]">
+      <img src="../../../../assets/books/fantasy.jpg" alt="Fantasy" class="w-24 h-24 rounded-full object-cover shadow-md" />
+      <div>
+        <h3 class="text-xl font-semibold text-gray-800">Fantasy</h3>
+        <p class="text-gray-600">Enter magical realms beyond imagination.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<br>
+<br>
+<br>
+<section class="bg-[#cfd4f5] py-20 px-6 flex items-center justify-center ">
+    <br>
+  <div class="max-w-3xl text-center px-10 rounded-xl mt-20">
+    <br>
+    <p class="text-xl md:text-2xl text-gray-800 font-normal leading-relaxed text-center mt-5">
+      “A reader lives a thousand lives before he dies. The man who never reads lives only one.”
+    </p>
+    <p class="text-right italic text-gray-700 mt-4">– George R.R. Martin</p>
+  </div>
+</section>
+<br>
+<br>
+<br>
+<section class="bg-white py-20">
+  <h2 class="text-center text-4xl font-semibold mb-16 text-gray-800">What Our Readers Say</h2>
+
+  <div class="container mx-auto px-6 sm:px-10 lg:px-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      
+      <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+        <p class="text-gray-700 italic mb-4">“Pustak helped me rediscover my love for books. Great platform!”</p>
+        <p class="font-semibold text-gray-800">— Aisha K.</p>
+      </div>
+
+      <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+        <p class="text-gray-700 italic mb-4">“Clean UI, easy wishlist, and great book variety.”</p>
+        <p class="font-semibold text-gray-800">— Rohit M.</p>
+      </div>
+
+      <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+        <p class="text-gray-700 italic mb-4">“Highly recommended for every reader out there.”</p>
+        <p class="font-semibold text-gray-800">— Priya S.</p>
+      </div>
+
+      <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+        <p class="text-gray-700 italic mb-4">“A must-have platform for book lovers and collectors.”</p>
+        <p class="font-semibold text-gray-800">— Devansh P.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<br>
+<br>
+
+<app-footer></app-footer>
+
 
