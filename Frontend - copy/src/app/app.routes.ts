@@ -23,6 +23,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path:'about',
+    loadComponent: () =>
+      import('./shared/components/about/about.component').then(
+        (m) => m.AboutComponent
+      ),
+  },
+  {
     path: 'admin',
     component: AdminLayoutComponent,
     canActivate: [authGuard], 
