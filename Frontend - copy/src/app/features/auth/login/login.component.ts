@@ -26,7 +26,6 @@ export class LoginComponent {
     const formData = new URLSearchParams();
     formData.set('username',this.loginForm.value.username);
     formData.set('password',this.loginForm.value.password);
-    console.log(this.loginForm.value);
     
 
     this.authService.login(formData).subscribe({

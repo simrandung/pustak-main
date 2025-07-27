@@ -43,10 +43,7 @@ export class UserCartComponent implements OnInit {
   subtotal = 0;
   tax = 0;
   total = 0;
-  // searchText = '';
-  // filteredBooks: Book[] = [];
   books: Book[] = [];
-  notifications = 2;
 
   private dialog = inject(MatDialog);
   private userService = inject(UserService);
@@ -81,7 +78,7 @@ export class UserCartComponent implements OnInit {
 
   calculateTotal() {
     this.subtotal = this.cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
-    this.tax = Math.round(this.subtotal * 0.05); // 5% tax
+    this.tax = Math.round(this.subtotal * 0.05); 
     this.total = this.subtotal + this.tax;
   }
 
@@ -116,12 +113,10 @@ goBack() {
   if (this.total === 0) {
     alert("Your cart is empty");
   } else {
-    // 1. Call backend to process checkout & send email
     this.userService.checkoutCart().subscribe({
       next: (res) => {
         console.log('Checkout response:', res);
 
-        // 2. Show confirmation dialog after backend confirms
         const dialogRef = this.dialog.open(CheckoutDialogComponent, {
           data: {
             invoice: res.invoice || '',
@@ -130,13 +125,10 @@ goBack() {
         });
 
         dialogRef.afterClosed().subscribe(() => {
-          // 3. Reset frontend cart
           this.cart = [];
           this.subtotal = 0;
           this.tax = 0;
           this.total = 0;
-
-          // 4. Clear cart from backend (optional if already done in checkout route)
           this.userService.clearCart().subscribe(() => {
             console.log('Cart cleared on backend');
           });
@@ -149,15 +141,6 @@ goBack() {
     });
   }
 }
-
-
-  // searchBooks() {
-  //   const term = this.searchText.toLowerCase();
-  //   this.filteredBooks = this.books.filter(book =>
-  //     book.title.toLowerCase().includes(term)
-  //   );
-  // }
-
   logout() {
     this.router.navigate(['landingPage']);
   }

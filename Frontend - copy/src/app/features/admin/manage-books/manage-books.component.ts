@@ -80,19 +80,6 @@ editBook(book: any) {
       this.loadBooks());
   }
 
-  // updateBook(id: string, book: any) {
-  //   this.bookService.updateBook(id, book).subscribe(() => {
-
-  //     this.loadBooks();
-  //   })
-
-  // }
-  // loadUsers(){
-  //   this.bookService.getAllUsers().subscribe((data)=>{
-  //     this.users = data;
-
-  //   })
-  // }
 
 
 

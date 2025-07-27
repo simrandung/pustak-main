@@ -15,9 +15,6 @@ import { UserNavbarComponent } from 'src/app/shared/components/user-navbar/user-
 export class UserDashboardComponent implements OnInit{
   books: any[] = [];
   filteredBooks: any[] = [];
-  searchText = '';
-  userInitial = '';
-  notifications = 2; 
 
 
   constructor(private userService: UserService, private router: Router) {}
@@ -31,21 +28,8 @@ export class UserDashboardComponent implements OnInit{
     });
   }
 
-  searchBooks() {
-    const term = this.searchText.toLowerCase();
-    this.filteredBooks = this.books.filter(book =>
-      book.title.toLowerCase().includes(term)
-    );
-  }
 
   addToCart(book: any) {
-    
-    if (!book.in_stock) {
-      alert(`Sorry! "${book.title}" is out of stock, but added to your wishlist.`);
-      this.userService.addToWishlist(book).subscribe();
-      return;
-    }
-
     this.userService.addToCart(book).subscribe(() => {
       alert(`"${book.title}" added to cart.`);
     });

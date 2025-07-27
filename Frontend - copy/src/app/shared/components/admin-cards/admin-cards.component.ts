@@ -24,7 +24,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['refreshTrigger']) {
-      this.loadAll(); // reload data when refreshTrigger changes
+      this.loadAll(); 
     }
   }
 

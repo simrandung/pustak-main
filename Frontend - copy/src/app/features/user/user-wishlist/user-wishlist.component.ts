@@ -50,13 +50,6 @@ export class UserWishlistComponent implements OnInit {
     });
   }
 
-  searchBooks() {
-    const term = this.searchText.toLowerCase();
-    this.wishlist = this.wishlist.filter((book) =>
-      book.title.toLowerCase().includes(term)
-    );
-  }
-
   removeFromWishlist(book: Wishlist) {
     this.userService.removeFromWishlist(book.book_id).subscribe(() => {
       this.wishlist = this.wishlist.filter((b) => b.book_id !== book.book_id);
@@ -77,7 +70,4 @@ export class UserWishlistComponent implements OnInit {
     this.router.navigate(['landingPage']);
   }
 
-  goBack() {
-    this.router.navigate(['user']);
-  }
 }

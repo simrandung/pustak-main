@@ -55,7 +55,7 @@ export class ManageUsersComponent implements OnInit {
   if (confirm(`Are you sure you want to delete user with email ${email}?`)) {
     this.adminService.deleteUserByEmail(email).subscribe(() => {
       this.users = this.users.filter(user => user.email !== email);
-      this.refreshCounter++; // Trigger refresh in AdminCardsComponent
+      this.refreshCounter++; 
     });
   }
 }

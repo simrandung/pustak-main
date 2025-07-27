@@ -10,7 +10,7 @@
         <div class="hidden sm:ml-6 sm:block justify-end">
           <div class="flex space-x-2 mt-2">
 
-            <!-- Books -->
+            
             <a routerLink="/user"
               routerLinkActive="bg-sky-200 text-black"
               [routerLinkActiveOptions]="{ exact: true }"
@@ -18,21 +18,19 @@
               Books
             </a>
 
-            <!-- Cart -->
+            
             <a routerLink="/user/cart"
               routerLinkActive="bg-sky-200 text-black"
               class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-sky-100 hover:text-black">
               Cart 🛒
             </a>
 
-            <!-- Wishlist -->
+            
             <a routerLink="/user/wishlist"
               routerLinkActive="bg-sky-200 text-black"
               class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-sky-100 hover:text-black">
               Wishlist ❤️
             </a>
-
-            <!-- Profile Dropdown -->
             <div class="relative" (click)="toggleDropdown()" style="cursor: pointer;">
               <div
                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-sky-100 hover:text-black">

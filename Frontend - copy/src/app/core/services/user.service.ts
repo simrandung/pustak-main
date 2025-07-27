@@ -17,7 +17,6 @@ export class UserService {
   constructor(private http: HttpClient, private service: BookService) { }
 
   getAllBooks(): Observable<Book[]> {
-    //return this.http.get(`${this.BASE_URL}/books`);
     return this.service.getAllBooks();
   }
 
@@ -30,10 +29,8 @@ export class UserService {
   }
 
   addToCart(book: any): Observable<Cart[]> {
-    console.log(book);
 
     return this.http.post<Cart[]>(`${this.BASE_URL}/cart/add`, book);
-    // this.book = this.service.book
   }
 
   getCart(): Observable<Cart[]> {

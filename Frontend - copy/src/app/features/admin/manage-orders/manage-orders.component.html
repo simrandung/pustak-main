@@ -11,10 +11,10 @@
     <h1 class="text-3xl font-bold mb-6">Manage Orders</h1>
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-600">
 
-    <!-- Admin Cards -->
+    
     <app-admin-cards [refreshTrigger]="refreshCounter"></app-admin-cards>
 
-    <!-- Orders Table Per User -->
+    
     <div *ngFor="let order of userOrders" class="mt-8 bg-white dark:bg-slate-800 shadow rounded p-4">
       <h2 class="text-xl font-semibold mb-4">Orders by: {{ order.email }}</h2>
 

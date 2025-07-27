@@ -32,7 +32,7 @@ export class AdminHomeComponent implements OnInit {
 
   topBooks: any[] = [];
 
-  // Hardcoded top selling table
+  
   public topSellingBooks = [
     { title: 'Clean Code', quantitySold: 120 },
     { title: 'Atomic Habits', quantitySold: 95 },
@@ -44,7 +44,7 @@ export class AdminHomeComponent implements OnInit {
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    this.loadTopBooks(); // for charts
+    this.loadTopBooks(); 
     this.checkTheme();
   }
 
